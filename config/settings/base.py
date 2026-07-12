@@ -15,7 +15,8 @@ DEBUG = env.bool('DEBUG',default=False)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS',default=[])
 
-# Application definition
+DJANGO_SETTINGS_MODULE = env('DJANGO_SETTINGS_MODULE',default='config.settings.dev')
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
