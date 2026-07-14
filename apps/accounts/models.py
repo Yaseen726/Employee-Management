@@ -14,15 +14,21 @@ class Department(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+
 class Project(models.Model):
+    id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
     name = models.CharField(max_length=100)
+    employees = models.ManyToManyField('Employee',through='Project_enrollment',related_name='projects')
 
 class Employee(models.Model):
     id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
     name = models.CharField(max_length=100)
-    department = models.ForeignKey(Department,on_delete=models.PROTECT,related_name="employees")
-    projects = models.ManyToManyField(Project,related_name='employees')
-#many to many rel
+
+    
+class Project_enrollment(models.Model):
+    employee = models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='enrollments')
+    project  = models.ForeignKey(Project,on_delete=models.CASCADE,related_name='enrollments')
 
 
 
