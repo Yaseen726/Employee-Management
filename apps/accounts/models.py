@@ -26,9 +26,9 @@ class Employee(models.Model):
     name = models.CharField(max_length=100)
 
     
-# class Project_enrollment(models.Model):
-#     employee = models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='enrollments')
-#     project  = models.ForeignKey(Project,on_delete=models.CASCADE,related_name='enrollments')
+class Project_enrollment(models.Model):
+    employee = models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='enrollments')
+    project  = models.ForeignKey(Project,on_delete=models.CASCADE,related_name='enrollments')
 
 
 
